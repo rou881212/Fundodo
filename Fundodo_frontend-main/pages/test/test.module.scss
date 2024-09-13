@@ -1,0 +1,83 @@
+@import '@/styles';
+
+.logo {
+  max-width: 210px;
+}
+main.container {
+  margin-top: 70px;
+}
+main .row {
+  justify-content: center;
+}
+
+.test-box {
+  margin-block: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ball {
+  @include circle-of(50px);
+
+  background-color: $secondary;
+}
+
+//todo: 將腳印款式更新，使用 pi/PiPawPrintFill
+
+.bPrimary2:has(.test-paw) {
+  position: relative;
+
+  &:hover {
+    background-color: $white;
+
+    .test-paw {
+      color: $primary;
+    }
+  }
+  &:active {
+    background-color: $tint5;
+  }
+}
+.test-paw {
+  --fa-rotate-angle: 30deg;
+  position: absolute;
+  color: $white;
+  transition: color 0.4s ease-in-out;
+
+  &:first-child {
+    bottom: 0.25rem;
+    left: 0.75rem;
+  }
+  &:last-child {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+//================================================
+.msgRegisterSuccess {
+  padding-top: 3rem;
+  background-color: $white;
+  border: 3px solid $shade3;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    @include rwd-above('lg') {
+      font-size: 4rem;
+    }
+  }
+  p {
+    line-height: 2;
+  }
+}
+.btn-box {
+  margin-block: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}

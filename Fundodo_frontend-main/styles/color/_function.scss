@@ -1,0 +1,32 @@
+//mix($color-1, $color-2, $weight: 50%) 是 SASS 內建的函數
+//color 可以是顏色的任何的格式
+@use 'sass:color';
+
+//================= 顏色微調函數
+
+//* API：淡化顏色: 用白色以指定比例混合
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+//* API：深化顏色: 用黑色以指定比例混合
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}
+
+//* API：顏色深化、淡化兩功能二合一
+// 正數為調深（重），負數為調淺（輕）
+@function shift-color($color, $weight) {
+  @return if(
+    $weight > 0,
+    shade-color($color, $weight),
+    tint-color($color, -$weight)
+  );
+}
+
+//* API：前景與後景色混合器
+// 可以調配相當於透明效果的顏色
+// opaque(#fff, rgba(0, 0, 0, .5)) => #808080
+@function opaque($background, $foreground) {
+  @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
+}

@@ -1,0 +1,99 @@
+@use '@/styles/lib-local' as s;
+
+.layout {
+  background-color: s.$white;
+  box-shadow: 0 3px 8px rgba(s.$shade2, 0.15),
+    0 1px 2px rgba(s.$shade3, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px; //給其他區域的參考用數據
+  z-index: 999;
+}
+.layout > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout nav {
+  display: none;
+
+  @include s.rwd-above('md') {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+//================================================
+.ulLink {
+  display: flex;
+  flex-direction: row;
+
+  & > li {
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    color: s.$shade2;
+    font-size: 1.125rem;
+    border-bottom: 5px solid transparent;
+    transition: border 0.4s linear;
+    &:hover {
+      border-bottom-color: s.$primary;
+
+      a {
+        color: s.$shade2;
+      }
+    }
+  }
+}
+.listBtn {
+  position: relative;
+
+  &:hover {
+    .prodList {
+      display: block;
+    }
+  }
+}
+
+.prodList {
+  display: none;
+  padding-block: 0.5rem;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 10rem;
+  background-color: s.$secondary;
+  box-shadow: 0 3px 4px 2px rgba(s.$shade2, 0.3);
+
+  li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: background 0.4s;
+    transition: color 0.4s;
+  }
+  li:hover a {
+    background-color: s.$tint1;
+    color: s.$shade4;
+  }
+}
+
+//================================================
+.ulFunc {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+
+  button,
+  a {
+    font-size: 2rem;
+    color: s.$shade2;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+}
